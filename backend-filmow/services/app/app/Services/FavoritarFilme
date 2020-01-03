@@ -1,0 +1,17 @@
+<?php
+
+namespace App\Services;
+
+use App\Favoritos;
+use App\Filmes;
+
+class FavoriteMovie{
+  public function favoriteMovie($user_id, $movie_id){
+        DB::table('favorites')->insert([
+          'user_id' => $user_id,
+          'movie_id' => $movie_id
+        ]);
+      }
+    }
+  }
+}

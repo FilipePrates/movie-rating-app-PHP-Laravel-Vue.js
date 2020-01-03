@@ -7,6 +7,12 @@
  * @author   Taylor Otwell <taylor@laravel.com>
  */
 
+ function console_log( $data ){
+   echo '<script>';
+   echo 'console.log('. json_encode( $data ) .')';
+   echo '</script>';
+ }
+
 define('LARAVEL_START', microtime(true));
 
 /*
