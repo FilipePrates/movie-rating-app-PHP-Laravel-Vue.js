@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Favorito extends Model
+class Favoritos extends Model
 {
   protected $table= 'favorites';
-  protected $fillable= ['favorite_id', 'user_id', 'movie_id';
+  protected $fillable= ['favorite_id', 'user_id', 'movie_id'];
 
   public static function boot() {
     parent::boot();

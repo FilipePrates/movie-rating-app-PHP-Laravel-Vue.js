@@ -14,7 +14,7 @@ class CreateMoviesTable extends Migration
     public function up()
     {
         Schema::create('movies', function (Blueprint $table) {
-          $table->increments('id');
+          $table->increments('id')->unique();;
           $table->string('adult');
           $table->text('belongs_to_collection');
           $table->integer('budget');
@@ -22,7 +22,7 @@ class CreateMoviesTable extends Migration
           $table->string('homepage');
           $table->string('imdb_id');
           $table->string('original_language');
-          $table->string('original-title');
+          $table->string('original_title');
           $table->string('overview');
           $table->string('popularity');
           $table->string('poster_path');
