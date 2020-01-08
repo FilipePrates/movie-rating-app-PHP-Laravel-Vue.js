@@ -35,7 +35,9 @@ export default {
     }
   },
   created(){
-    // this.moviesData = this.movies
+    this.$store.dispatch('getFavoritesFromServer',{id:this.$store.getters.user.id}).then(response=>{
+      this.$store.commit('setMovies',response.data)
+    })
   },
   mounted(){
     // console.log('movies',this.movies)

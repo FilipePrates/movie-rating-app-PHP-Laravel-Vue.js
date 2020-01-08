@@ -1,5 +1,5 @@
 <template>
-  <v-card height="515" width="300" color="primary" class="white--text">
+  <v-card height="500" width="300" color="primary" class="white--text">
     <v-img
       :id="movie.imdb_id"
       :src="'http://image.tmdb.org/t/p/w185/' + movie.poster_path"
@@ -28,11 +28,11 @@
       </v-btn>
 
       <v-layout row color="primary">
-        <v-flex xs10 class="pl-2">
+        <v-flex xs10 class="pl-2 mb-0">
           <span>{{movie.title}}</span>
         </v-flex>
-        <v-flex xs2>
-          <span>{{movie.vote_average}}</span>
+        <v-flex xs2 class="secondary--text">
+          <span >{{movie.vote_average}}</span>
         </v-flex>
       </v-layout>
     </v-card-title>
@@ -75,12 +75,18 @@ export default {
         this.infoOpen = true
       }
     },
-    toggleMovieAsFavorite(){
+    toggleMovieAsFavorite(movie_id){
       console.log('isFavorited',this.isFavorited)
       if(this.isFavorited){
-        this.$store.commit('removeFromFavorites',this.movie.id)
+        this.$store.dispatch('removeFavoriteFromServer',{user_id: this.$store.getters.user.id, movie_id: movie_id}).then(response => {
+          console.log(response)
+          this.$store.commit('removeFromFavorites', movie_id)
+        });
       }else{
-        this.$store.commit('addToFavorites',this.movie.id)
+        this.$store.dispatch('createFavoriteInServer',{user_id: this.$store.getters.user.id, movie_id: movie_id}).then(response => {
+          console.log(response)
+          this.$store.commit('addToFavorites',movie_id)
+        });
       }
     }
   },

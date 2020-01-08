@@ -23,9 +23,10 @@
           rounded
           label="Pesquisar Filmes"
           append-icon="mdi-magnify"
-          class="mx-10 mt-9 mb-1">
-
-        </v-text-field>
+          class="mx-10 mt-9 mb-1"
+          v-model="search"
+          @input="changeSerchTerm"
+        ></v-text-field>
       </v-flex>
       <v-spacer></v-spacer>
       <v-divider vertical></v-divider>
@@ -36,7 +37,7 @@
       </v-btn>
       <v-divider vertical></v-divider>
 
-      <v-btn to="/filmes" text class="mx-3">
+      <v-btn to="/" text class="mx-3">
         <v-icon class="mr-2">mdi-filmstrip</v-icon>
         Filmes
       </v-btn>
@@ -86,10 +87,22 @@ export default {
     }
   },
   data: () => ({
-    //
+    search: ""
   }),
+  methods: {
+    changeSerchTerm(){
+      let lastSearch = this.search
+      setTimeout(()=>{
+        if (lastSearch == this.search){
+          this.$store.dispatch('getMoviesFromServer',{searchTerm: this.search}).then(response=>{
+            this.$store.commit('setMovies',response.data)
+          })
+        }
+      },250)
+    }
+  },
   mounted(){
-    this.$store.dispatch('getFavoritesFromServer',{id:4}).then((response)=>{
+    this.$store.dispatch('getFavoritesFromServer',{id:this.$store.getters.user.id}).then((response)=>{
       this.$store.commit('setMovies',response.data)
       for (var i=0;i<response.data.length;i++){
         console.log(response.data[i])

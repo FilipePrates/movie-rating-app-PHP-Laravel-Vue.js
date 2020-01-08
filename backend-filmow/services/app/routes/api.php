@@ -20,6 +20,8 @@ Route::post('favorites','FilmowController@createFavorite');
 Route::delete('favorites','FilmowController@deleteFavorite');
 
 
-Route::get('movie','FilmowController@getMovie');
+// Route::get('movie','FilmowController@getMovie');
+
+Route::get('movies','FilmowController@getMovies');
 
 Route::get('user','FilmowController@getUsers');

@@ -19,9 +19,14 @@ class FilmowController extends Controller
 
 //
 
+  public function test(){
+    return response()->json("test", 200);
+  }
+
+//
+
   public function createFavorite(Request $request){
     $this->favoritarFilme->favoriteMovie($request->user_id,$request->movie_id);
-
     return response()->json('Favorito registrado com sucesso', 200);
   }
 
@@ -35,8 +40,13 @@ class FilmowController extends Controller
 
 //
 
-  public function test(){
-    return response()->json("test", 200);
+  public function getMovies(Request $request){
+    if($request->searchTerm != ""){
+      $filmes= Movie::where('title','like', '%' . $request->searchTerm . '%')->get();
+    }else{
+      $filmes = Movie::all()->random(25);
+    }
+    return response()->json($filmes, 200);
   }
 
 //
@@ -48,18 +58,10 @@ class FilmowController extends Controller
 
 //
 
-
-//
-
   public function getUserFavoriteMovies(Request $request){
     $users = User::where('id',$request->id)->first();
     return response()->json($users->favoriteMovies, 200);
   }
 
-//
 
-  public function getMovie(Request $request){
-    $filmes= Movie::where('id',$request->id)->first();
-    return response()->json($filmes->favoritadas, 200);
-  }
 }

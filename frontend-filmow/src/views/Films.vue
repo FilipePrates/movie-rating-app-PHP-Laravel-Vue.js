@@ -1,10 +1,10 @@
 <template>
-  <v-layout row wrap>
+  <v-layout row wrap justify-center>
     <v-flex xs12></v-flex>
     <v-flex xs3 class="mt-5">
-      <!-- <v-icon class="mb-3 ml-9" color="primary" large>mdi-heart</v-icon> -->
       <span class="mytitle ml-9">Filmes</span>
     </v-flex>
+    <v-flex xs9></v-flex>
     <v-flex xs12>
       <v-layout row wrap class="ml-5">
         <v-flex xs2 class="ma-4" v-for="movie in movies" :key="movie.id">
@@ -12,6 +12,12 @@
         </v-flex>
       </v-layout>
     </v-flex>
+    <v-flex xs1>
+      <v-btn text @click="moreMovies">
+        <v-icon color="primary">mdi-dots-vertical</v-icon>
+      </v-btn>
+    </v-flex>
+
   </v-layout>
 </template>
 
@@ -31,6 +37,23 @@ export default {
       return this.$store.getters.movies
     },
   },
+  methods: {
+    moreMovies(){
+      this.$store.dispatch('getMoviesFromServer').then(response=>{
+        for(var i = 0;i < response.data.length;i++){
+          this.$store.commit('pushMovies',response.data[i]);
+        }
+        console.log(this.$store.getters.movies)
+      });
+    }
+  },
+  created(){
+    console.log(this.$store.getters.movies)
+    this.$store.dispatch('getMoviesFromServer').then(response=>{
+      this.$store.commit('setMovies',response.data);
+      console.log(this.$store.getters.movies)
+    })
+  }
 };
 </script>
 
