@@ -20,7 +20,6 @@
 							label="Email"
 							name="email"
 							v-model="email"
-							v-validate="'required|email'"
 							class="input-group--focused"
 							required
 							></v-text-field>
@@ -28,7 +27,6 @@
 							label="Senha"
 							name="password"
 							v-model="password"
-							v-validate="'required'"
 							@click:append="() => (e3 = !e3)"
 							type="password"
 							required

@@ -89,6 +89,13 @@ export default {
     //
   }),
   mounted(){
+    this.$store.dispatch('getFavoritesFromServer',{id:4}).then((response)=>{
+      this.$store.commit('setMovies',response.data)
+      for (var i=0;i<response.data.length;i++){
+        console.log(response.data[i])
+        this.$store.commit('addToFavorites',response.data[i].id)
+      }
+    });
     if(!this.logado){
       this.$router.push('/login')
     }

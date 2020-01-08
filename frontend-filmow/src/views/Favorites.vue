@@ -38,7 +38,7 @@ export default {
     // this.moviesData = this.movies
   },
   mounted(){
-    console.log('movies',this.movies)
+    // console.log('movies',this.movies)
   }
 };
 

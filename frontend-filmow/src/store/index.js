@@ -1,5 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import FilmowApi from '../api/FilmowApi'
+// import Api from '../api/Api'
+
 
 Vue.use(Vuex)
 
@@ -32,10 +35,12 @@ export default new Vuex.Store({
       'vote_average': 7.7,
       'vote_count': 5415
     }],
-    user_favorites: [
-      {'movie_id':862},
-      {'movie_id':1672}
-    ]
+    user: {
+      'id': 4,
+      'name': 'Sofia Costa',
+      'email': 'sofiacostadesouza2006',
+    },
+    user_favorites: []
   },
   getters: {
     logado(state){
@@ -55,22 +60,56 @@ export default new Vuex.Store({
       state.logado = true
     },
     removeFromFavorites(state, id){
-      console.log('removeFromFavorites',id)
       for(var favorite in state.user_favorites) {
-        console.log('it',state.user_favorites[favorite].movie_id)
           if(state.user_favorites[favorite].movie_id == id) {
               Vue.delete(state.user_favorites,favorite)
-              console.log('deletou',state.user_favorites)
           }
       }
     },
     addToFavorites(state,id){
-      console.log('addToFavorites',id)
       state.user_favorites.push({'movie_id':id})
-      console.log('adicionou',state.user_favorites)
+    },
+    setMovies(state, movies){
+      state.movies = movies;
+    },
+    setUser(state, user){
+      state.user = user;
     }
   },
   actions: {
+    async removeFavoriteFromServer(context, payload){
+      try{
+        console.log('rFFS index.js', payload)
+        const response = await FilmowApi.removeFavorite(payload);
+        return response;
+      }catch(error){
+        return 'error'
+      }
+    },
+
+    async getFavoritesFromServer(context, payload){
+      try{
+        console.log('gFFS index.js', payload)
+        const response = await FilmowApi.getFavoriteMovies(payload);
+
+        return response;
+      }catch(error){
+        console.log(error);
+        return 'error'
+      }
+    },
+
+    async getMovieFromServer(context, payload){
+      try{
+        console.log('gMFS index.js', payload)
+        const response = await FilmowApi.getMovie(payload);
+
+        return response;
+      }catch(error){
+        console.log(error);
+        return 'error'
+      }
+    },
   },
   modules: {
   }

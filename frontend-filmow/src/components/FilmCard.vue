@@ -1,14 +1,14 @@
 <template>
   <v-card height="515" width="300" color="primary" class="white--text">
     <v-img
-      id="image"
+      :id="movie.imdb_id"
       :src="'http://image.tmdb.org/t/p/w185/' + movie.poster_path"
     ></v-img>
     <v-card-title>
       <div v-if="infoOpen">
         <p  class="mr-4" style="position:absolute; top:60px; font-size:13px; line-height: 15pt;">{{movie.overview}}</p>
         <p  class="mr-4" style="position:absolute; bottom:60px; right:0px; font-size:13px; line-height: 15pt;">{{movie.release_date}}</p>
-        <p class="mr-4" style="position:absolute; bottom:60px; left:10px; font-size:13px; line-height: 15pt;">{{genres}}</p>
+        <!-- <p class="mr-4" style="position:absolute; bottom:60px; left:10px; font-size:13px; line-height: 15pt;">{{genres}}</p> -->
       </div>
 
 
@@ -68,10 +68,10 @@ export default {
   methods:{
     toggleInfo(){
       if(this.infoOpen){
-        document.getElementById('image').classList.remove("blurred")
+        document.getElementById(this.movie.imdb_id).classList.remove("blurred")
         this.infoOpen = false
       }else{
-        document.getElementById('image').classList.add("blurred")
+        document.getElementById(this.movie.imdb_id).classList.add("blurred")
         this.infoOpen = true
       }
     },
