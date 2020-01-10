@@ -1,5 +1,5 @@
 <template>
-  <v-card height="500" width="300" color="primary" class="white--text">
+  <v-card height="100%" width="100%" color="primary" class="white--text">
     <v-img
       :id="movie.imdb_id"
       :src="'http://image.tmdb.org/t/p/w185/' + movie.poster_path"
@@ -21,6 +21,15 @@
         </v-icon>
       </v-btn>
 
+      <!-- <v-btn absolute bottom left fab small class="mb-4 ml-12 hidden-md-and-up" @click="toggleMovieAsFavorite(movie.id)">
+        <v-icon v-if="isFavorited" color="secondary">
+          mdi-heart
+        </v-icon>
+        <v-icon v-else>
+          mdi-heart-outline
+        </v-icon>
+      </v-btn> -->
+
       <v-btn absolute top right fab small class="mt-8" @click="toggleInfo()">
         <v-icon color="primary">
           mdi-information-outline
@@ -34,6 +43,9 @@
         <v-flex xs2 class="secondary--text">
           <span >{{movie.vote_average}}</span>
         </v-flex>
+        <!-- <v-flex xs12 class="secondary--text">
+          <span >{{movie.vote_average}}</span>
+        </v-flex> -->
       </v-layout>
     </v-card-title>
 
@@ -78,12 +90,12 @@ export default {
     toggleMovieAsFavorite(movie_id){
       console.log('isFavorited',this.isFavorited)
       if(this.isFavorited){
-        this.$store.dispatch('removeFavoriteFromServer',{user_id: this.$store.getters.user.id, movie_id: movie_id}).then(response => {
+        this.$store.dispatch('removeFavoriteFromServer',{user_id: this.$store.getters.user[0].id, movie_id: movie_id}).then(response => {
           console.log(response)
           this.$store.commit('removeFromFavorites', movie_id)
         });
       }else{
-        this.$store.dispatch('createFavoriteInServer',{user_id: this.$store.getters.user.id, movie_id: movie_id}).then(response => {
+        this.$store.dispatch('createFavoriteInServer',{user_id: this.$store.getters.user[0].id, movie_id: movie_id}).then(response => {
           console.log(response)
           this.$store.commit('addToFavorites',movie_id)
         });

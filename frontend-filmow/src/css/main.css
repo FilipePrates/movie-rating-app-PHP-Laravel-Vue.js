@@ -1,0 +1,198 @@
+.screen-size {
+    max-width: 720px;
+    margin: auto;
+}
+
+.v-dialog {
+    position: absolute;
+    bottom: 0;
+    margin: auto;
+    max-width: 720px;
+    /*max-width: 80%;*/
+}
+
+.v-dialog .v-card {
+    border-radius: 32px 32px 0 0 !important;
+}
+
+.img {
+    max-width: 100%;
+    margin: auto;
+}
+
+.layout {
+    margin: 0 !important;
+}
+
+.my-btn {
+    min-width: 0;
+    width: 32px;
+}
+
+.background {
+    /*background-image: url("https://previews.123rf.com/images/speedphoto/speedphoto1410/speedphoto141000630/32729456-crumpled-paper-background.jpg");*/
+    /*background-image: url("https://image.freepik.com/free-photo/paperboard-texture_95678-72.jpg");*/
+    /*background-image: url("../assets/Fundo.svg"), url("https://image.freepik.com/free-photo/paperboard-texture_95678-72.jpg");*/
+    background-blend-mode: multiply;
+    background-size: auto;
+    background-repeat: repeat;
+}
+
+.v-card {
+    border-radius: 7px !important;
+}
+
+/*.v-btn{*/
+/*	border-radius: 7px !important;*/
+/*}*/
+.v-progress-linear {
+    border-radius: 7px !important;
+}
+
+.battle-background {
+    background-image: url("https://s3.amazonaws.com/jovensgenios.com/apps-images/backgrounds/fundo_da_batalha_4.png") !important;
+    background-position: center !important;
+    background-size: cover !important;
+    background-color: rgba(0, 0, 0, 0.8);
+    max-width: 720px;
+}
+
+.my-headline {
+    font-size: 24px;
+    font-weight: bold;
+    color: #404040;
+}
+
+.my-sub-headline {
+    font-size: 16px;
+    font-weight: bold;
+    color: #404040;
+}
+
+.elevated-button {
+    -webkit-box-shadow: 0px 6px 0px #CCCCCC, 6px 3px 15px rgba(0, 0, 0, .4);
+    -moz-box-shadow: 0px 6px 0px #CCCCCC, 6px 3px 15px rgba(0, 0, 0, .4);
+    box-shadow: 0px 6px 0px #CCCCCC, 6px 13px 5px rgba(0, 0, 0, .4);
+    -webkit-transition: all .1s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+}
+
+.elevated-button:active {
+    /*background-image: linear-gradient(bottom, rgb(256, 256, 256) 0%, rgb(256, 256, 256) 100%);*/
+    /*background-image: -o-linear-gradient(bottom, rgb(256, 256, 256) 0%, rgb(256, 256, 256) 100%);*/
+    /*background-image: -moz-linear-gradient(bottom, rgb(256, 256, 256) 0%, rgb(256, 256, 256) 100%);*/
+    /*background-image: -webkit-linear-gradient(bottom, rgb(256, 256, 256) 0%, rgb(256, 256, 256) 100%);*/
+    /*background-image: -ms-linear-gradient(bottom, rgb(256, 256, 256) 0%, rgb(256, 256, 256) 100%);*/
+
+    /*background-image: -webkit-gradient(*/
+    /*        linear,*/
+    /*        left bottom,*/
+    /*        left top,*/
+    /*        color-stop(0, rgb(256, 256, 256)),*/
+    /*        color-stop(1, rgb(256, 256, 256))*/
+    /*);*/
+
+    -webkit-box-shadow: 0px 2px 0px #AAAAAA, 0px 1px 6px rgba(0, 0, 0, .4), inset 0px 1px 0px rgba(255, 255, 255, .3), inset 0px 0px 3px rgba(255, 255, 255, .5);
+    -moz-box-shadow: 0px 2px 0px #AAAAAA, 0px 1px 6px rgba(0, 0, 0, .4), inset 0px 1px 0px rgba(255, 255, 255, .3), inset 0px 0px 3px rgba(255, 255, 255, .5);
+    box-shadow: 0px 2px 0px #AAAAAA, 0px 1px 6px rgba(0, 0, 0, .4), inset 0px 1px 0px rgba(255, 255, 255, .3), inset 0px 0px 3px rgba(255, 255, 255, .5);
+
+    -webkit-transform: translate(0, 4px);
+    -moz-transform: translate(0, 4px);
+    transform: translate(0, 4px);
+}
+
+.elevated-button-solo {
+    -webkit-box-shadow: 0px 6px 0px #CCCCCC, 6px 3px 15px rgba(0, 0, 0, .4);
+    -moz-box-shadow: 0px 6px 0px #CCCCCC, 6px 3px 15px rgba(0, 0, 0, .4);
+    box-shadow: 0px 6px 0px #CCCCCC, 6px 13px 5px rgba(0, 0, 0, .4);
+    -webkit-transition: all .1s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+}
+
+.elevated-button-solo:active {
+    background-image: linear-gradient(bottom, #259085 0%, #259085 100%);
+    background-image: -o-linear-gradient(bottom, #259085 0%, #259085 100%);
+    background-image: -moz-linear-gradient(bottom, #259085 0%, #259085 100%);
+    background-image: -webkit-linear-gradient(bottom, #259085 0%, #259085 100%);
+    background-image: -ms-linear-gradient(bottom, #259085 0%, #259085 100%);
+
+    background-image: -webkit-gradient(
+            linear,
+            left bottom,
+            left top,
+            color-stop(0, #259085),
+            color-stop(1, #259085)
+    );
+
+    -webkit-box-shadow: 0px 2px 0px #AAAAAA, 0px 1px 6px rgba(0, 0, 0, .4), inset 0px 1px 0px rgba(255, 255, 255, .3), inset 0px 0px 3px rgba(255, 255, 255, .5);
+    -moz-box-shadow: 0px 2px 0px #AAAAAA, 0px 1px 6px rgba(0, 0, 0, .4), inset 0px 1px 0px rgba(255, 255, 255, .3), inset 0px 0px 3px rgba(255, 255, 255, .5);
+    box-shadow: 0px 2px 0px #AAAAAA, 0px 1px 6px rgba(0, 0, 0, .4), inset 0px 1px 0px rgba(255, 255, 255, .3), inset 0px 0px 3px rgba(255, 255, 255, .5);
+
+    -webkit-transform: translate(0, 4px);
+    -moz-transform: translate(0, 4px);
+    transform: translate(0, 4px);
+}
+
+.elevated-button-vs {
+    -webkit-box-shadow: 0px 6px 0px #CCCCCC, 6px 3px 15px rgba(0, 0, 0, .4);
+    -moz-box-shadow: 0px 6px 0px #CCCCCC, 6px 3px 15px rgba(0, 0, 0, .4);
+    box-shadow: 0px 6px 0px #CCCCCC, 6px 13px 5px rgba(0, 0, 0, .4);
+    -webkit-transition: all .1s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+}
+
+.elevated-button-vs:active {
+    background-image: linear-gradient(bottom, #F9AC30 0%, #F9AC30 100%);
+    background-image: -o-linear-gradient(bottom, #F9AC30 0%, #F9AC30 100%);
+    background-image: -moz-linear-gradient(bottom, #F9AC30 0%, #F9AC30 100%);
+    background-image: -webkit-linear-gradient(bottom, #F9AC30 0%, #F9AC30 100%);
+    background-image: -ms-linear-gradient(bottom, #F9AC30 0%, #F9AC30 100%);
+
+    background-image: -webkit-gradient(
+            linear,
+            left bottom,
+            left top,
+            color-stop(0, #F9AC30),
+            color-stop(1, #F9AC30)
+    );
+
+    -webkit-box-shadow: 0px 2px 0px #AAAAAA, 0px 1px 6px rgba(0, 0, 0, .4), inset 0px 1px 0px rgba(255, 255, 255, .3), inset 0px 0px 3px rgba(255, 255, 255, .5);
+    -moz-box-shadow: 0px 2px 0px #AAAAAA, 0px 1px 6px rgba(0, 0, 0, .4), inset 0px 1px 0px rgba(255, 255, 255, .3), inset 0px 0px 3px rgba(255, 255, 255, .5);
+    box-shadow: 0px 2px 0px #AAAAAA, 0px 1px 6px rgba(0, 0, 0, .4), inset 0px 1px 0px rgba(255, 255, 255, .3), inset 0px 0px 3px rgba(255, 255, 255, .5);
+
+    -webkit-transform: translate(0, 4px);
+    -moz-transform: translate(0, 4px);
+    transform: translate(0, 4px);
+}
+
+.background-battle-friends {
+    /*background: url("http://i0.wp.com/shoryuken.com/wp-content/uploads/2017/01/rektscrub-daigo-vs-tokido-thumb.jpg?fit=750%2C400&resize=750%2C400");*/
+    background-color: #F9AC30;
+    /*background: linear-gradient(110deg, #F9AC30 60%, #259085 60%);*/
+    background-position: center;
+    background-size: cover;
+    position: fixed;
+    height: 100%;
+    /*filter: blur(3px);*/
+    max-width: 720px;
+}
+
+.background-battle-solo {
+    /*background: url("https://streetfighter.com/wp-content/uploads/2015/04/featured-homepage-smoke.jpg");*/
+    background-color: #259085;
+    /*background: linear-gradient(70deg, #259085 40%, #F9AC30 40%);*/
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 100%;
+    /*filter: blur(3px);*/
+    max-width: 720px;
+}

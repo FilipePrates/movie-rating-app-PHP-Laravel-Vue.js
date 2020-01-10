@@ -2,12 +2,10 @@
 
 export default{
   createFavorite(favoriteData){
-    console.log('create api',favoriteData)
     return window.axios.post('/api/favorites', favoriteData);
   },
 
   removeFavorite(favoriteData){
-    console.log('delete api',favoriteData)
     return window.axios.delete('/api/favorites', { params: favoriteData });
   },
 
@@ -16,8 +14,10 @@ export default{
   },
 
   getMovies(searchTerm){
-    console.log(searchTerm)
     return window.axios.get('/api/movies/',{ params: searchTerm });
   },
 
+  authorizeLogin(email){
+    return window.axios.get('/api/login/', { params: email });
+  }
 }

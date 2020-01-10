@@ -24,4 +24,9 @@ Route::delete('favorites','FilmowController@deleteFavorite');
 
 Route::get('movies','FilmowController@getMovies');
 
-Route::get('user','FilmowController@getUsers');
+Route::get('users','FilmowController@getUsers');
+
+Route::post('user','FilmowController@createUser');
+Route::put('user','FilmowController@editUser');
+
+Route::get('login','FilmowController@authorizeLogin');

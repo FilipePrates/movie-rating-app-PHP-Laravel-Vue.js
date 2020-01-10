@@ -7,7 +7,7 @@
     </v-flex>
     <v-flex xs12>
       <v-layout row wrap class="ml-5">
-        <v-flex xs2 class="ma-4" v-for="movie in movies" :key="movie.id">
+        <v-flex xs2 sm6 class="ma-4" v-for="movie in movies" :key="movie.id">
           <film-card :movie="movie"></film-card>
         </v-flex>
       </v-layout>
@@ -35,8 +35,9 @@ export default {
     }
   },
   created(){
-    this.$store.dispatch('getFavoritesFromServer',{id:this.$store.getters.user.id}).then(response=>{
+    this.$store.dispatch('getFavoritesFromServer',{id:this.$store.getters.user[0].id}).then(response=>{
       this.$store.commit('setMovies',response.data)
+      this.$store.commit('setFavorites', response.data)
     })
   },
   mounted(){

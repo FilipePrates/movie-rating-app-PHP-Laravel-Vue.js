@@ -3,6 +3,8 @@ import App from './App.vue'
 import vuetify from './plugins/vuetify';
 import router from './router'
 import store from './store'
+import './css/animation.css'
+import './css/main.css'
 
 
 window.axios = require('axios');

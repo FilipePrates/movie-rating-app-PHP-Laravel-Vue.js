@@ -51,6 +51,17 @@ class FilmowController extends Controller
 
 //
 
+  public function authorizeLogin(Request $request){
+    $users = User::where('email', '=', $request->email)->get();
+    if(!$users){
+      return response()->json('Nao foi encontrado uma conta com esse email e senha. Tente de novo.', 200);
+    }else{
+      return response()->json($users, 200);
+    }
+  }
+
+//
+
   public function getUsers(Request $request){
     $users = User::get();
     return response()->json($users, 200);
@@ -58,6 +69,29 @@ class FilmowController extends Controller
 
 //
 
+  public function createUser(Request $request){
+    $emailAlreadyRegistered = User::where('email','=',$request->email)->get();
+    // console_log($emailAlreadyRegistered);
+    if($emailAlreadyRegistered != []){
+      return response()->json('Ja existe uma conta com esse email!', 200);
+    }else{
+      $users = User::insert([
+        'name' => $request->name,
+        'email' => $request->email,
+        'password' => $request->password
+      ]);
+      return response()->json($users, 200);
+    }
+  }
+
+//
+
+  public function editUser(Request $request){
+    $users = User::find($resquest->emai);
+    return response()->json($users, 200);
+  }
+
+//
   public function getUserFavoriteMovies(Request $request){
     $users = User::where('id',$request->id)->first();
     return response()->json($users->favoriteMovies, 200);

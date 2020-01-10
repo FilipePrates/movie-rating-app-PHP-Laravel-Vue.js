@@ -6,18 +6,17 @@
       app
       v-if="logado"
     >
-      <v-app-bar-nav-icon to="/">
+      <v-app-bar-nav-icon to="/" class="hidden-sm-and-down">
         <v-img
           :src="require('./assets/lampada.png')"
-          class=""
           contain
           height="45"
         ></v-img>
       </v-app-bar-nav-icon>
 
-      <v-toolbar-title>Filmei</v-toolbar-title>
+      <v-toolbar-title  class="hidden-sm-and-down">{{name}}</v-toolbar-title>
 
-      <v-flex xs4>
+      <v-flex sm4 class="hidden-sm-and-down">
         <v-text-field
           outlined
           rounded
@@ -28,18 +27,35 @@
           @input="changeSerchTerm"
         ></v-text-field>
       </v-flex>
+      <v-flex xs12 class="hidden-md-and-up">
+        <v-text-field
+          outlined
+          rounded
+          label="Pesquisar Filmes"
+          append-icon="mdi-magnify"
+          class="mt-8"
+          v-model="search"
+          @input="changeSerchTerm"
+        ></v-text-field>
+      </v-flex>
       <v-spacer></v-spacer>
       <v-divider vertical></v-divider>
 
-      <v-btn to="/favoritos" text class="mx-3">
+      <v-btn to="/favoritos" text class="mx-3 hidden-sm-and-down">
         <v-icon class="mr-2">mdi-heart</v-icon>
         Favoritos
       </v-btn>
+      <v-btn to="/favoritos" text class="mx-3 hidden-md-and-up">
+        <v-icon class="mr-2">mdi-heart</v-icon>
+      </v-btn>
       <v-divider vertical></v-divider>
 
-      <v-btn to="/" text class="mx-3">
+      <v-btn to="/" text class="mx-3 hidden-sm-and-down">
         <v-icon class="mr-2">mdi-filmstrip</v-icon>
         Filmes
+      </v-btn>
+      <v-btn to="/" text class="mx-3 hidden-md-and-up">
+        <v-icon class="mr-2">mdi-filmstrip</v-icon>
       </v-btn>
 
       <v-divider vertical></v-divider>
@@ -83,7 +99,10 @@ export default {
   },
   computed:{
     logado(){
-      return this.$store.getters.logado
+      return this.$store.getters.user.length
+    },
+    name(){
+      return this.$store.getters.user[0].name
     }
   },
   data: () => ({
@@ -102,10 +121,9 @@ export default {
     }
   },
   mounted(){
-    this.$store.dispatch('getFavoritesFromServer',{id:this.$store.getters.user.id}).then((response)=>{
+    this.$store.dispatch('getFavoritesFromServer',{id:this.$store.getters.user[0].id}).then((response)=>{
       this.$store.commit('setMovies',response.data)
       for (var i=0;i<response.data.length;i++){
-        console.log(response.data[i])
         this.$store.commit('addToFavorites',response.data[i].id)
       }
     });
