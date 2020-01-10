@@ -28,5 +28,6 @@ Route::get('users','FilmowController@getUsers');
 
 Route::post('user','FilmowController@createUser');
 Route::put('user','FilmowController@editUser');
+Route::delete('user','FilmowController@deleteUser');
 
 Route::get('login','FilmowController@authorizeLogin');

@@ -14,7 +14,7 @@
 								</v-avatar>
 								<v-flex>
 									<h3 class="text mb-0 mt-4 text-center">./JG_filmow_trilha_backend</h3>
-									<h3 class="headline mb-0 mt-4 hidden-sm-and-down">Bem vindo! Preencha seu <b>usuario</b> e <b>senha</b> abaixo!</h3>
+									<h3 class="headline mb-0 mt-4 hidden-sm-and-down">Bem vindo! Preencha seu <b>email</b> e <b>senha</b> abaixo!</h3>
 
 								</v-flex>
 								<v-avatar :tile="true" size="56px" class="mx-12 hidden-sm-and-down">
@@ -46,6 +46,12 @@
 
 						<!-- <p style="color: red;">{{errorMsg}}</p> -->
 						<v-btn block color="primary" type="submit" class="mb-2">Entrar</v-btn>
+						<v-layout row wrap>
+							<v-flex md9 sm6></v-flex>
+							<v-flex md2 sm4><v-btn to="/create-account" text><h3 class="text-center">Nao possui uma conta? </h3></v-btn></v-flex>
+						</v-layout>
+
+
 					</v-form>
 				</v-card-text>
       </v-card>

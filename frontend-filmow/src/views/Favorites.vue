@@ -7,8 +7,8 @@
     </v-flex>
     <v-flex xs12>
       <v-layout row wrap class="ml-5">
-        <v-flex xs2 sm6 class="ma-4" v-for="movie in movies" :key="movie.id">
-          <film-card :movie="movie"></film-card>
+        <v-flex xs12 sm2 class="ma-4" v-for="movie in movies" :key="movie.id">
+          <film-card :movie="movie" :favoritesView="true"></film-card>
         </v-flex>
       </v-layout>
     </v-flex>

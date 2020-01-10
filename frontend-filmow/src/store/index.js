@@ -8,12 +8,16 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     logado: false,
+    isEditingUser: false,
     movies: [],
     user: {},
     user_favorites: [],
-    searchTerm: ""
+    searchTerm: "",
   },
   getters: {
+    isEditingUser(state){
+      return state.isEditingUser
+    },
     searchTerm(state){
       return state.searchTerm
     },
@@ -31,6 +35,9 @@ export default new Vuex.Store({
     }
   },
   mutations: {
+    setEditingUser(state, bool){
+      state.isEditingUser = bool;
+    },
     setSearchTerm(state, searchTerm){
       state.searchTerm = searchTerm;
     },
@@ -56,6 +63,13 @@ export default new Vuex.Store({
     },
     pushMovies(state, movies){
       state.movies.push(movies);
+    },
+    removeFromMovies(state, id){
+      for (var i = 0;i<state.movies.length;i++){
+        if(state.movies[i].id == id){
+          state.movies.splice(i,1)
+        }
+      }
     },
     setUser(state, user){
       state.user = user;
@@ -119,6 +133,39 @@ export default new Vuex.Store({
       try{
         console.log('aLIS index.js',payload)
         const response = await FilmowApi.authorizeLogin(payload);
+        return response;
+      }catch(error){
+        console.log(error);
+        return 'error'
+      }
+    },
+
+    async createUserInServer(context,payload){
+      try{
+        console.log('cUIS index.js',payload)
+        const response = await FilmowApi.createUser(payload);
+        return response;
+      }catch(error){
+        console.log(error);
+        return 'error'
+      }
+    },
+
+    async editUserInServer(context,payload){
+      try{
+        console.log('eUIS index.js',payload)
+        const response = await FilmowApi.editUser(payload);
+        return response;
+      }catch(error){
+        console.log(error);
+        return 'error'
+      }
+    },
+
+    async deleteUserInServer(context,payload){
+      try{
+        console.log('dUIS index.js',payload)
+        const response = await FilmowApi.deleteUser(payload);
         return response;
       }catch(error){
         console.log(error);

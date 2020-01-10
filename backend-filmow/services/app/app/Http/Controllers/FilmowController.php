@@ -70,25 +70,37 @@ class FilmowController extends Controller
 //
 
   public function createUser(Request $request){
-    $emailAlreadyRegistered = User::where('email','=',$request->email)->get();
-    // console_log($emailAlreadyRegistered);
-    if($emailAlreadyRegistered != []){
+    $emailAlreadyRegistered = User::where('email','=',$request->email)->first();
+    if($emailAlreadyRegistered){
       return response()->json('Ja existe uma conta com esse email!', 200);
     }else{
-      $users = User::insert([
+      $user = User::insert([
         'name' => $request->name,
         'email' => $request->email,
         'password' => $request->password
       ]);
-      return response()->json($users, 200);
+      return response()->json($user, 200);
     }
   }
 
 //
 
   public function editUser(Request $request){
-    $users = User::find($resquest->emai);
-    return response()->json($users, 200);
+    $user = User::where('email','=',$request->email)->first();
+    $user->name = $request->name;
+    $user->email = $request->email;
+    $user->password = $request->password;
+    $user->save();
+    return response()->json($user, 200);
+  }
+
+//
+
+  public function deleteUser(Request $request){
+    $user = User::where('email','=',$request->email)->first();
+    $user->favoriteMovies()->detach();
+    $user->delete();
+    return response()->json('Usuario deletado com sucesso', 200);
   }
 
 //

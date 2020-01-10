@@ -57,7 +57,7 @@ export default {
   name: 'FilmCard',
   props: [
     'movie',
-    'favorites'
+    'favoritesView'
   ],
   data: () => ({
     infoOpen: false
@@ -93,6 +93,10 @@ export default {
         this.$store.dispatch('removeFavoriteFromServer',{user_id: this.$store.getters.user[0].id, movie_id: movie_id}).then(response => {
           console.log(response)
           this.$store.commit('removeFromFavorites', movie_id)
+          if(this.favoritesView){
+            this.$store.commit('removeFromMovies', movie_id)
+          }
+
         });
       }else{
         this.$store.dispatch('createFavoriteInServer',{user_id: this.$store.getters.user[0].id, movie_id: movie_id}).then(response => {

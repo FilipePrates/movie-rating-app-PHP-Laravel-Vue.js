@@ -19,5 +19,17 @@ export default{
 
   authorizeLogin(email){
     return window.axios.get('/api/login/', { params: email });
+  },
+
+  createUser(userData){
+    return window.axios.post('/api/user/', userData);
+  },
+
+  editUser(userData){
+    return window.axios.put('/api/user/', userData);
+  },
+
+  deleteUser(userData){
+    return window.axios.delete('/api/user/', userData);
   }
 }

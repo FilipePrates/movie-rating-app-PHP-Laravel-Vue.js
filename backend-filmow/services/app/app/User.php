@@ -21,9 +21,16 @@ class User extends Model
         'email_verified_at' => 'datetime',
     ];
 
+    protected static function boot() {
+      parent::boot();
+
+      static::deleting(function($check) {
+          $check->favoriteMovies()->delete();
+      });
+    }
+
     public function favoriteMovies()
     {
         return $this->belongsToMany('App\Movie','favorites','user_id','movie_id');
     }
-
 }

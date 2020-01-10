@@ -22,9 +22,9 @@
           rounded
           label="Pesquisar Filmes"
           append-icon="mdi-magnify"
-          class="mx-10 mt-9 mb-1"
+          class="mx-10 mt-9 mb-1 "
           v-model="search"
-          @input="changeSerchTerm"
+          @input="changedSerchTerm"
         ></v-text-field>
       </v-flex>
       <v-flex xs12 class="hidden-md-and-up">
@@ -35,10 +35,10 @@
           append-icon="mdi-magnify"
           class="mt-8"
           v-model="search"
-          @input="changeSerchTerm"
+          @input="changedSerchTerm"
         ></v-text-field>
       </v-flex>
-      <v-spacer></v-spacer>
+      <v-spacer class="pr-3"></v-spacer>
       <v-divider vertical></v-divider>
 
       <v-btn to="/favoritos" text class="mx-3 hidden-sm-and-down">
@@ -46,7 +46,7 @@
         Favoritos
       </v-btn>
       <v-btn to="/favoritos" text class="mx-3 hidden-md-and-up">
-        <v-icon class="mr-2">mdi-heart</v-icon>
+        <v-icon class="mx-1">mdi-heart</v-icon>
       </v-btn>
       <v-divider vertical></v-divider>
 
@@ -55,7 +55,7 @@
         Filmes
       </v-btn>
       <v-btn to="/" text class="mx-3 hidden-md-and-up">
-        <v-icon class="mr-2">mdi-filmstrip</v-icon>
+        <v-icon class="mx-1">mdi-filmstrip</v-icon>
       </v-btn>
 
       <v-divider vertical></v-divider>
@@ -73,12 +73,12 @@
         </template>
 
         <v-list>
-          <v-list-item
-            v-for="n in 5"
-            :key="n"
-            @click="() => {}"
-          >
-            <v-list-item-title>Option {{ n }}</v-list-item-title>
+          <v-list-item to="/profile">
+            <v-list-item-title><v-icon class="mr-3">mdi-account</v-icon>Perfil</v-list-item-title>
+          </v-list-item>
+          <v-divider></v-divider>
+          <v-list-item @click="logout">
+            <v-list-item-title><v-icon class="mr-3">mdi-exit-to-app</v-icon>Sair</v-list-item-title>
           </v-list-item>
         </v-list>
       </v-menu>
@@ -109,7 +109,11 @@ export default {
     search: ""
   }),
   methods: {
-    changeSerchTerm(){
+    logout(){
+      this.$store.commit('setUser',{})
+      this.$router.push('/login')
+    },
+    changedSerchTerm(){
       let lastSearch = this.search
       setTimeout(()=>{
         if (lastSearch == this.search){
