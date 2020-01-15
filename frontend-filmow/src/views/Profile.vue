@@ -4,7 +4,7 @@
     <v-flex sm3 xs8 class="mt-5">
       <span class="mytitle ml-9 px-0">Perfil
         <v-btn text small fab class="pb-1" @click="editProfile"><v-icon>mdi-pencil</v-icon></v-btn>
-        <v-btn text small fab class="pb-1" @click="editProfile"><v-icon color="red">mdi-delete</v-icon></v-btn>
+        <v-btn text small fab class="pb-1" @click="deleteProfile"><v-icon color="red">mdi-delete</v-icon></v-btn>
       </span>
 
     </v-flex>
@@ -22,13 +22,13 @@
         <v-flex sm4 class="mt-5">
           <v-layout row wrap>
             <v-flex xs12>
-              <span class="headline"><b>Id: </b>{{user[0].id}}</span>
+              <span class="headline"><b>Id: </b>{{user.id}}</span>
             </v-flex>
             <v-flex xs12 class="mt-2">
-              <span class="headline"><b>Nome: </b>{{user[0].name}}</span>
+              <span class="headline"><b>Nome: </b>{{user.name}}</span>
             </v-flex>
             <v-flex xs12 class="mt-2">
-              <span class="headline"><b>Email: </b>{{user[0].email}}</span>
+              <span class="headline"><b>Email: </b>{{user.email}}</span>
             </v-flex>
             <v-flex xs12 class="mt-2">
               <span class="headline"><b>Filmes Favoritos: </b>{{user_favorites.length}}</span>
@@ -63,13 +63,20 @@ export default {
       return this.$store.getters.movies
     },
     user() {
-      return this.$store.getters.user
+      return this.$store.getters.user[0]
     },
     user_favorites() {
       return this.$store.getters.user_favorites
     }
   },
   methods: {
+    deleteProfile(){
+      this.$store.dispatch('deleteUserInServer',this.user).then(response=>{
+        console.log(response)
+        this.$store.commit('setUser',{})
+        this.$router.push('/login')
+      })
+    },
     editProfile(){
       this.$store.commit('setEditingUser',true)
       this.$router.push('/create-account')

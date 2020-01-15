@@ -98,7 +98,6 @@ class FilmowController extends Controller
 
   public function deleteUser(Request $request){
     $user = User::where('email','=',$request->email)->first();
-    $user->favoriteMovies()->detach();
     $user->delete();
     return response()->json('Usuario deletado com sucesso', 200);
   }

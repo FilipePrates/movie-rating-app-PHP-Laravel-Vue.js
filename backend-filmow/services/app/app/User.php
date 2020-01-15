@@ -25,7 +25,7 @@ class User extends Model
       parent::boot();
 
       static::deleting(function($check) {
-          $check->favoriteMovies()->delete();
+          $check->favoriteMovies()->detach();
       });
     }
 

@@ -30,6 +30,6 @@ export default{
   },
 
   deleteUser(userData){
-    return window.axios.delete('/api/user/', userData);
+    return window.axios.delete('/api/user/', {params:userData});
   }
 }
